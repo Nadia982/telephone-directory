@@ -1,44 +1,32 @@
-const convertBtn = document.getElementById("convert-btn");
-const numberInput = document.getElementById("number");
-const output = document.getElementById("output");
+const userInput = document.getElementById("user-input");
+const resultsDiv = document.getElementById("results-div");
+const checkBtn = document.getElementById("check-btn");
+const clearBtn = document.getElementById("clear-btn");
 
-const romanNumerals = {
-  M: 1000,
-  CM: 900,
-  D: 500,
-  CD: 400,
-  C: 100,
-  XC: 90,
-  L: 50,
-  XL: 40,
-  X: 10,
-  IX: 9,
-  V: 5,
-  IV: 4,
-  I: 1,
-};
-let numeralString = "";
-function convertToRoman(input) {
-  for (let numeral in romanNumerals) {
-    while (input - romanNumerals[numeral] >= 0) {
-      input -= romanNumerals[numeral];
-      numeralString += numeral;
-    }
+function checkInput(input) {
+  const regex = /(^1?\s?\(?\d{3}\)?\s?-?\d{3}\s?-?\d{4}$)/g;
+
+  const noBrackets = input.indexOf("(") === -1 && input.indexOf(")") === -1;
+  const twoBrackets = input.indexOf("(") !== -1 && input.indexOf(")") !== -1;
+
+  if (regex.test(input) && (noBrackets || twoBrackets)) {
+    resultsDiv.innerText = `Valid US number: ${input}`;
+  } else {
+    resultsDiv.innerText = `Invalid US number: ${input}`;
   }
-  output.innerText = numeralString;
 }
 
 function processInput() {
-   numeralString = "";
-  if (numberInput.value == "") {
-    output.innerText = "Please enter a valid number";
-  } else if (numberInput.value < 1) {
-    output.innerText = "Please enter a number greater than or equal to 1";
-  } else if (numberInput.value > 3999) {
-    output.innerText = "Please enter a number less than or equal to 3999";
+  if (userInput.value == "") {
+    alert("Please provide a phone number");
   } else {
-    convertToRoman(numberInput.value);
+    checkInput(userInput.value);
   }
 }
+function clearInput() {
+  resultsDiv.innerText = "";
+  userInput.value = "";
+}
 
-convertBtn.addEventListener("click", processInput);
+checkBtn.addEventListener("click", processInput);
+clearBtn.addEventListener("click", clearInput);

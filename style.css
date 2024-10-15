@@ -14,7 +14,9 @@ body {
 
 #container {
   min-height: 400px;
-  background-color: rgb(176, 243, 221);
+  max-width: 600px;
+  width: 80%;
+  background-color: #FEEFDD;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -38,36 +40,42 @@ h1 {
   margin-bottom: 1rem;
 }
 
-#number,
-#convert-btn {
+.btn-container {
+  display: flex;
+  gap: 1rem;
+}
+
+#user-input,
+#check-btn, #clear-btn {
   min-height: 3rem;
 }
 
-#number {
-  border: none;
+#user-input {
+  border: 2px solid grey;
   border-radius: 10px;
   padding: 0.5rem;
 }
 
-#convert-btn {
+#check-btn, #clear-btn {
+  width: 8rem;
   padding: 0.5rem 1rem;
   border: none;
   cursor: pointer;
-  background-color: rgb(255, 100, 114);
+  background-color: #71A2B6;
   font-weight: bold;
   font-size: 1.2rem;
   border-radius: 10px;
+  filter: brightness(1.2);
 }
 
-#convert-btn:hover {
-  filter: brightness(1.2);
+#check-btn:hover, #clear-btn:hover {
+  filter: brightness(1.4);
 }
 #output-header {
   margin-bottom: 1rem;
 }
-#output {
+#results-div {
   margin-top: 1rem;
-  display: block;
   height: 3rem;
   border: 1px solid black;
   width: 80%;
@@ -77,8 +85,23 @@ h1 {
   align-items: center;
 }
 
-@media screen and (min-width: 480px) {
+@media screen and (max-width: 768px) {
+  h1{
+    text-align: center;
+  }
   #input-container {
     flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  
+  #container {
+    width: 90%;
+  }
+
+  .btn-container {
+    flex-direction: column;
+    gap: .5rem;
   }
 }

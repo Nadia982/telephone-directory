@@ -4,20 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Roman Numeral Converter</title>
+    <title>Telephone Directory</title>
   </head>
   <body>
     <div id="container">
-      <h1>Roman Numeral Converter</h1>
-      <p class="description">
-        Type a number below to find out its equivalent in Roman numerals.
-      </p>
+      <h1>Telephone Directory</h1>
+    
       <div id="input-container">
-        <input id="number" />
-        <button id="convert-btn">Submit</button>
+        <input id="user-input" />
+        <div class="btn-container">
+        <button id="check-btn">Submit</button>
+        <button id="clear-btn">Clear</button>
+      </div>
       </div>
       <h2 id="ouput-header">Result:</h2>
-      <p id="output"></p>
+      <div id="results-div"></div>
+
     </div>
     <script src="script.js"></script>
   </body>
